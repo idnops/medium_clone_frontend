@@ -9,14 +9,35 @@ export default {
     "./error.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        wiggle: {
+          "0%": { transform: "translateX(-1%)" },
+          "20%": { transform: "translateX(1%)" },
+          "40%": { transform: "translateX(-1%)" },
+          "60%": { transform: "translateX(1%)" },
+          "80%": { transform: "translateX(-1%)" },
+          "100%": { transform: "translateX(1%)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 0.4s ease-in-out",
+      },
+    },
     screens: {
-      'xl': '1192px'
+      xl: "1192px",
     },
     fontFamily: {
-      'serif': ['PT Serif', 'ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif']
-    }
+      serif: [
+        "PT Serif",
+        "ui-serif",
+        "Georgia",
+        "Cambria",
+        "Times New Roman",
+        "Times",
+        "serif",
+      ],
+    },
   },
   plugins: [],
-}
-
+};

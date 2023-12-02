@@ -5,10 +5,15 @@
     "moduleResolution": "node",
     "strict": true, 
     "allowJs": true,
+    "jsx":"preserve"
   },
   "typeRoots": [
       "../node_modules/@types/"
   ],
   "noImplicitAny": false,
-  "include": ["**/*.ts", "test"]
+  "include": [
+    "env.d.ts",
+    ".nuxt/nuxt.d.ts",
+    "**/*"
+  ]
 }
