@@ -1,20 +1,36 @@
 <template>
+  <div class="bg-amber-400 h-[75px]"></div>
   <div
     class="border-b border-slate-800 fixed w-full top-0 transition-colors duration-500 z-10"
     :class="scrolled ? 'bg-white' : 'bg-amber-400'"
   >
     <div class="container mx-auto">
-      <div class="py-4 flex justify-between items-center">
+      <div
+        class="py-[25px] h-[75px] flex flex-row justify-between items-center"
+      >
         <div>
-          <TheLogo />
+          <NuxtLink to="/">
+            <TheLogo />
+          </NuxtLink>
         </div>
-        <div class="flex gap-6 items-center">
-          <NuxtLink to="/" class="text-sm">Our story</NuxtLink>
-          <NuxtLink to="/" class="text-sm">Membership</NuxtLink>
-          <NuxtLink to="/" class="text-sm">Write</NuxtLink>
-          <button class="text-sm" @click.prevent="handleSignIn">Sign in</button>
+        <div class="flex items-center">
+          <NuxtLink to="/" class="text-sm font-light mr-[25px]"
+            >Our story</NuxtLink
+          >
+          <NuxtLink to="/" class="text-sm font-light leading-5 mr-[25px]"
+            >Membership</NuxtLink
+          >
+          <NuxtLink to="/" class="text-sm font-light leading-5 mr-[25px]"
+            >Write</NuxtLink
+          >
           <button
-            class="rounded-full text-white px-5 py-2.5 text-sm transition-colors duration-500"
+            class="text-sm font-light leading-5 mr-[25px]"
+            @click.prevent="handleSignIn"
+          >
+            Sign in
+          </button>
+          <button
+            class="rounded-full text-sm font-light leading-5 text-white px-[17px] py-[9px] transition-colors duration-500"
             :class="scrolled ? 'bg-green-700' : 'bg-black'"
             @click="handleSignUp"
           >

@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavTheNavigation />
-    <main class="mt-[73px]">
+    <main>
       <slot />
     </main>
     <UiModal />

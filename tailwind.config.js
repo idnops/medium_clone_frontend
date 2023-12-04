@@ -29,7 +29,7 @@ export default {
     },
     fontFamily: {
       serif: [
-        "PT Serif",
+        "Gt-super",
         "ui-serif",
         "Georgia",
         "Cambria",
@@ -37,6 +37,7 @@ export default {
         "Times",
         "serif",
       ],
+      sans: ["Sohne"],
     },
   },
   plugins: [],
