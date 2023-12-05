@@ -13,9 +13,6 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-icon',
     '@pinia/nuxt',
-  ],
-  googleFonts: {
-    Roboto: true,
-    'PT Serif': true
-  }
+    '@vueuse/nuxt',
+  ]
 })

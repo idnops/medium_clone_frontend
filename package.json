@@ -18,6 +18,8 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/google-fonts": "^3.1.0",
     "@typescript-eslint/parser": "^6.12.0",
+    "@vueuse/core": "^10.7.0",
+    "@vueuse/nuxt": "^10.7.0",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
@@ -32,10 +34,12 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
+    "@popperjs/core": "^2.11.8",
     "@types/animejs": "^3.1.12",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
     "animejs": "^3.2.1",
-    "pinia": "^2.1.7"
+    "pinia": "^2.1.7",
+    "volar-service-eslint": "^0.0.17"
   }
 }
