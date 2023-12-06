@@ -18,7 +18,7 @@
           </NuxtLink>
           <div class="flex items-center flex-wrap ml-2">
             <div>
-              <UiPopup :placement="'right'">
+              <UiPopup placement="right">
                 <template v-slot:content>
                   <AuthorCard :author="props.author" />
                 </template>

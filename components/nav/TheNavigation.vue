@@ -2,7 +2,7 @@
   <div class="bg-amber-400 h-[75px]"></div>
   <div
     class="border-b border-slate-800 fixed w-full top-0 transition-colors duration-500 z-10"
-    :class="scrolled ? 'bg-white' : 'bg-amber-400'"
+    :class="isScrolled ? 'bg-white' : 'bg-amber-400'"
   >
     <div class="container mx-auto">
       <div
@@ -31,7 +31,7 @@
           </button>
           <button
             class="rounded-full text-sm font-light leading-5 text-white px-[17px] py-[9px] transition-colors duration-500"
-            :class="scrolled ? 'bg-green-700' : 'bg-black'"
+            :class="isScrolled ? 'bg-green-700' : 'bg-black'"
             @click="handleSignUp"
           >
             Get started
@@ -49,13 +49,13 @@ import { useModal } from "#imports";
 import SignIn from "../auth/SignIn.vue";
 import SignUp from "../auth/SignUp.vue";
 
-const scrolled = ref<boolean>(false);
+const isScrolled = ref<boolean>(false);
 const modal = useModal();
 const handleScroll = (e: any): void => {
   if (window.scrollY > 370) {
-    scrolled.value = true;
+    isScrolled.value = true;
   } else {
-    scrolled.value = false;
+    isScrolled.value = false;
   }
 };
 

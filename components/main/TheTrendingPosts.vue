@@ -1,5 +1,5 @@
 <template>
-  <div class="border-b-slate-100 border-b">
+  <div class="">
     <div class="container mx-auto">
       <div class="pt-10 pb-4">
         <div class="flex flex-row items-center mb-4">

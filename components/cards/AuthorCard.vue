@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col w-[300px] p-4" v-if="!isLoading">
     <div class="flex items-center">
       <NuxtLink to="/">
         <div class="relative">
@@ -29,7 +29,7 @@
         aliquam quas et consectetur commodi beatae illo recusandae iusto eos
       </span>
     </div>
-    <div class="mt-4 pt-[10px] border-t border-slate-200 flex justify-between">
+    <div class="mt-4 pt-[10px] border-t border-slate-100 flex justify-between">
       <span class="text-[13px] leading-5 text-slate-600"> 37K Followers </span>
       <span>
         <button
@@ -40,6 +40,18 @@
       </span>
     </div>
   </div>
+  <div class="skeleton w-[280px] p-3" v-else>
+    <div class="animate-pulse flex flex-col">
+      <div class="flex items-center gap-2 mb-5">
+        <div class="rounded-full bg-slate-100 h-5 w-5"></div>
+        <div class="h-2 bg-slate-100 w-[82px]"></div>
+      </div>
+      <div class="mb-3 h-2 bg-slate-100 w-[80%]"></div>
+      <div class="mb-3 h-2 bg-slate-100 w-[65%]"></div>
+      <div class="mb-3 h-2 bg-slate-100 w-[85%]"></div>
+      <div class="mb-3 h-2 bg-slate-100 w-[70%]"></div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -48,5 +60,13 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+const isLoading = ref(true);
+
+onMounted(() => {
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 300);
+});
 </script>
 <style scoped></style>

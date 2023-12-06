@@ -2,8 +2,8 @@
   <div>
     <div ref="tooltip" class="tooltip rounded-[4px] z-10">
       <div class="bg-white rounded-[4px]">
-        <div class="w-[300px] p-4">
-          <slot name="content" />
+        <div>
+          <slot name="content" v-if="isShown" />
         </div>
         <div class="arrow" data-popper-arrow></div>
       </div>
@@ -25,6 +25,7 @@ const popperInstance = ref();
 const popcorn = ref();
 const tooltip = ref();
 const interval = ref();
+const isShown = ref(false);
 
 onMounted(() => {
   useEventListener(popcorn.value, "mouseenter", show);
@@ -47,6 +48,7 @@ onMounted(() => {
 
 const show = (): void => {
   tooltip.value.setAttribute("data-show", "");
+  isShown.value = true;
   clearTimeout(interval.value);
   popperInstance.value.update();
 };
@@ -54,6 +56,7 @@ const show = (): void => {
 const hide = (): void => {
   interval.value = setTimeout(() => {
     tooltip.value.removeAttribute("data-show");
+    isShown.value = false;
   }, 200);
 };
 
