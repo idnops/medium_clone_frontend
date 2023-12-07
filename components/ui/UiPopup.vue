@@ -28,7 +28,7 @@ const interval = ref();
 const isShown = ref(false);
 
 onMounted(() => {
-  useEventListener(popcorn.value, "mouseenter", show);
+  useEventListener(popcorn.value, "mouseenter", showAndUpdate);
   useEventListener(popcorn.value, "mouseleave", hide);
   useEventListener(tooltip.value, "mouseenter", show);
   useEventListener(tooltip.value, "mouseleave", hide);
@@ -50,8 +50,15 @@ const show = (): void => {
   tooltip.value.setAttribute("data-show", "");
   isShown.value = true;
   clearTimeout(interval.value);
+};
+
+const showAndUpdate = (): void => {
+  tooltip.value.setAttribute("data-show", "");
+  isShown.value = true;
+  clearTimeout(interval.value);
   popperInstance.value.update();
 };
+
 
 const hide = (): void => {
   interval.value = setTimeout(() => {
