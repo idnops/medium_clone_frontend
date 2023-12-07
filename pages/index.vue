@@ -1,17 +1,16 @@
 <template>
   <TheHero />
-  <TheTrendingPosts />
-  <div class="pt-14 border-t-slate-100 border-t">
+  <TheTrendingPosts :posts="posts" />
+  <div class="pt-14 border-t-neutral-100 border-t">
     <div class="container mx-auto">
       <div class="grid-cols-12 grid">
         <section class="row-start-1 col-start-1 col-span-7">
-          <ThePostList :posts="posts" />
+          <div class="py-3">
+            <ThePostList :posts="posts" />
+          </div>
         </section>
         <aside class="row-start-1 col-start-9 col-span-4">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias
-          similique explicabo a unde, nihil voluptatum dignissimos, ad ab
-          consequatur quibusdam quod cum velit placeat quaerat sed vel. Ducimus,
-          dolorem cumque.
+          <TheSidebar :tags="tags" :links="links" />
         </aside>
         <div class="min-h-screen"></div>
       </div>
@@ -24,6 +23,31 @@ import TheTrendingPosts from "~/components/main/TheTrendingPosts.vue";
 import ThePostList from "~/components/main/ThePostList.vue";
 import TheHero from "../components/main/TheHero.vue";
 import type { PostDto } from "../components/post/dto/Post.dto";
+import TheSidebar from "~/components/main/TheSidebar.vue";
+
+const tags = reactive([
+  "Programming",
+  "Data Science",
+  "Technology",
+  "Self Improvement",
+  "Writing",
+  "Relationships",
+  "Machine Learning",
+  "Productivity",
+  "Politics",
+]);
+
+const links = reactive([
+  "Help",
+  "Status",
+  "About",
+  "Careers",
+  "Blog",
+  "Privacy",
+  "Terms",
+  "Text to speech",
+  "Teams",
+]);
 
 const posts = reactive<PostDto[]>([
   {

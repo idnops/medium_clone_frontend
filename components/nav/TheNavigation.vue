@@ -1,7 +1,7 @@
 <template>
   <div class="bg-amber-400 h-[75px]"></div>
   <div
-    class="border-b border-slate-800 fixed w-full top-0 transition-colors duration-500 z-10"
+    class="border-b border-neutral-800 fixed w-full top-0 transition-colors duration-500 z-10"
     :class="isScrolled ? 'bg-white' : 'bg-amber-400'"
   >
     <div class="container mx-auto">

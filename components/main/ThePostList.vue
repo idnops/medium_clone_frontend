@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-3">
+  <div>
     <RegularPost v-for="post in posts" :post="post" />
   </div>
 </template>

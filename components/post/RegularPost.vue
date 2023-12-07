@@ -36,7 +36,7 @@
             </div>
 
             <div v-if="post.community" class="flex items-center">
-              <div class="text-slate-700 pr-[2px] text-[13px] leading-4">
+              <div class="text-neutral-700 pr-[2px] text-[13px] leading-4">
                 in
               </div>
               <div class="text-[13px] leading-4" v-if="post.community">
@@ -50,7 +50,7 @@
             {{ post.title }}
           </h2>
           <div class="pt-1">
-            <h3 class="max-h-10 line-clamp-2 text-slate-600 leading-5">
+            <h3 class="max-h-10 line-clamp-2 text-neutral-600 leading-5">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero
               sit recusandae itaque quidem cum at tempore eum quis minima
               officia ducimus nam labore, velit, non molestias fugiat nesciunt
@@ -60,15 +60,15 @@
         </NuxtLink>
         <div class="pt-2 flex justify-between items-center">
           <div
-            class="text-slate-700 text-[13px] leading-5 flex items-center gap-2 font-light"
+            class="text-neutral-700 text-[13px] leading-5 flex items-center gap-2 font-light"
           >
             <span> {{ post.date }}</span>
-            <div class="w-[2px] h-[2px] rounded-full bg-slate-500"></div>
+            <div class="w-[2px] h-[2px] rounded-full bg-neutral-500"></div>
             <span>{{ post.duration }} min read </span>
-            <div class="w-[2px] h-[2px] rounded-full bg-slate-500"></div>
+            <div class="w-[2px] h-[2px] rounded-full bg-neutral-500"></div>
             <NuxtLink to="/">
               <div class="bg-neutral-100 px-2 py-1 rounded-full">
-                <span class="text-xs font-light text-slate-600"
+                <span class="text-xs font-light text-neutral-600"
                   >Technology</span
                 >
               </div>
@@ -79,10 +79,14 @@
               v-if="post.isMemberOnly"
             />
           </div>
-          <div class="text-slate-500 hover:text-slate-900 flex items-center">
-            <button>
-              <BookmarkIcon />
-            </button>
+          <div
+            class="text-neutral-500 hover:text-neutral-900 flex items-center"
+          >
+            <div class="mr-2">
+              <button>
+                <BookmarkIcon />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -110,9 +114,6 @@ interface Props {
 }
 
 const { post } = defineProps<Props>();
-const isInCommunity = computed(() => {
-  return post.community !== undefined;
-});
 </script>
 
 <style scoped></style>

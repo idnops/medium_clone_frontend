@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-amber-400 border-b border-slate-800 relative">
+  <div class="bg-amber-400 border-b border-neutral-800 relative">
     <div class="container mx-auto">
       <div class="w-[550px] h-full pt-[93px] pb-[92px]">
         <div class="mb-8">

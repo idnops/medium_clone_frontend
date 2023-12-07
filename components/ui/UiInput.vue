@@ -4,15 +4,15 @@
       <div class="mb-3">{{ props.label }}</div>
       <div class="text-center">
         <div
-          class="text-slate-800 relative"
+          class="text-neutral-800 relative"
           :class="{ 'animate-wiggle': props.isAnimating }"
         >
           <input
             :type="props.type"
             :value="modelValue"
             @input="updateInput"
-            :class="{ 'border-b border-slate-800': !props.error }"
-            class="outline-none text-center w-full text-base text-slate-800"
+            :class="{ 'border-b border-neutral-800': !props.error }"
+            class="outline-none text-center w-full text-base text-neutral-800"
           />
           <Icon
             v-if="props.error"
