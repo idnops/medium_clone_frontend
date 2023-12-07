@@ -20,7 +20,11 @@
             <div>
               <UiPopup placement="right">
                 <template v-slot:content>
-                  <AuthorCard :author="post.author" />
+                  <AuthorCard
+                    :author="post.author"
+                    :is-book-author="post.isBookAuthor"
+                    :is-member="post.isMemberOnly"
+                  />
                 </template>
 
                 <template v-slot:activator="{ setRef }">

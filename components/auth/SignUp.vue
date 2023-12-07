@@ -2,7 +2,14 @@
   <div
     class="px-14 py-11 w-[360px] text-center flex flex-col flex-[1_0_auto] justify-center items-center"
   >
-    <h1 class="text-[28px] font-serif">Join Medium.</h1>
+    <h2 class="text-[28px] font-serif tracking-tight">
+      {{ title || "Join Medium." }}
+    </h2>
+    <div class="mt-[30px] max-w-[316px]">
+      <h4>
+        {{ subtitle }}
+      </h4>
+    </div>
     <div class="mt-12">
       <button
         class="rounded-full border border-black px-2.5 py-2 flex justify-between items-center w-[300px] mt-3"
@@ -49,6 +56,13 @@
 import { useModal } from "#imports";
 import SignIn from "./SignIn.vue";
 import SignUpWithEmail from "./SignUpWithEmail.vue";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { title, subtitle } = defineProps<Props>();
 
 const modal = useModal();
 

@@ -15,7 +15,11 @@
             <div>
               <UiPopup placement="right">
                 <template v-slot:content>
-                  <AuthorCard :author="post.author" />
+                  <AuthorCard
+                    :author="post.author"
+                    :is-book-author="post.isBookAuthor"
+                    :is-member="post.isMemberOnly"
+                  />
                 </template>
 
                 <template v-slot:activator="{ setRef }">
@@ -83,7 +87,7 @@
             class="text-neutral-500 hover:text-neutral-900 flex items-center"
           >
             <div class="mr-2">
-              <button>
+              <button @click="handleBookmark">
                 <BookmarkIcon />
               </button>
             </div>
@@ -108,12 +112,26 @@ import type { PostDto } from "./dto/Post.dto";
 import AuthorCard from "../cards/AuthorCard.vue";
 import BookAuthorIcon from "../main/Icons/BookAuthorIcon.vue";
 import BookmarkIcon from "../main/Icons/BookmarkIcon.vue";
+import SignUp from "../auth/SignUp.vue";
 
 interface Props {
   post: PostDto;
 }
 
 const { post } = defineProps<Props>();
+const modal = useModal();
+const auth = useAuth();
+const handleBookmark = () => {
+  if (!auth.user) {
+    modal.open(SignUp, {
+      title: "Create an account to save this story.",
+      subtitle:
+        "Save stories to your personalized lists and access them anytime, anywhere.",
+    });
+
+    // else do bookmark logic
+  }
+};
 </script>
 
 <style scoped></style>

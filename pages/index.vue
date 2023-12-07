@@ -1,6 +1,6 @@
 <template>
   <TheHero />
-  <TheTrendingPosts :posts="posts" />
+  <TheTrendingPosts :posts="posts.slice(0, 6)" />
   <div class="pt-14 border-t-neutral-100 border-t">
     <div class="container mx-auto">
       <div class="grid-cols-12 grid">
@@ -103,6 +103,24 @@ const posts = reactive<PostDto[]>([
     title: "Data Quality Score: The next chapter of data quality at Airbnb",
     date: "Nov 28",
     duration: "9",
+    isMemberOnly: false,
+  },
+  {
+    id: 7,
+    author: "Lessig",
+    title: "ChatGPT, or: How I Learned to Stop Worrying and Love AI",
+    date: "Nov 29",
+    duration: "7",
+    isMemberOnly: false,
+    isBookAuthor: true,
+  },
+  {
+    id: 8,
+    author: "Lyman Stone",
+    community: "How Many Hobbits? A Demographic Analysis of Middle Earth",
+    title: "Data Quality Score: The next chapter of data quality at Airbnb",
+    date: "Dec 6",
+    duration: "16",
     isMemberOnly: false,
   },
 ]);

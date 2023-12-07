@@ -28,10 +28,14 @@
               @click.stop=""
             >
               <KeepAlive>
-                <component :is="view" v-model="model"></component>
+                <component
+                  :is="view"
+                  v-model="model"
+                  v-bind="{ ...payload }"
+                ></component>
               </KeepAlive>
             </div>
-            <div class="absolute right-5 top-5">
+            <div class="absolute right-[12px] top-[12px]">
               <button @click="closeModal">
                 <Icon name="material-symbols-light:close" size="24" />
               </button>
@@ -61,7 +65,7 @@ import { useModal } from "../../stores/modal";
 import { storeToRefs } from "pinia";
 
 const modal = useModal();
-const { isOpen, view, actions } = storeToRefs(modal);
+const { isOpen, view, actions, payload } = storeToRefs(modal);
 
 const model = reactive({});
 

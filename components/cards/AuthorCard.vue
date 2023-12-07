@@ -9,6 +9,7 @@
             class="w-8 h-8 rounded-full"
           />
           <Icon
+            v-if="isMember"
             name="streamline:star-2-solid"
             class="text-amber-400 absolute -top-1 -right-1"
             size="16"
@@ -18,10 +19,20 @@
       <NuxtLink to="/">
         <div class="pl-3 flex flex-col">
           <h2 class="max-h-12 line-clamp-2 text-xl leading-6 font-medium">
-            {{ props.author }}
+            {{ author }}
           </h2>
         </div>
       </NuxtLink>
+    </div>
+    <div class="pt-3" v-if="isBookAuthor">
+      <div class="flex items-center">
+        <div>
+          <BookAuthorIcon class="w-5 h-5" />
+        </div>
+        <div class="ml-[5px]">
+          <span class="text-blue-500"> Book Author </span>
+        </div>
+      </div>
     </div>
     <div class="pt-2 text-[13px] leading-5">
       <span>
@@ -38,6 +49,7 @@
       <span>
         <button
           class="rounded-full bg-green-600 text-[13px] text-white px-2 pb-px"
+          @click="handleFollow"
         >
           Follow
         </button>
@@ -59,11 +71,19 @@
 </template>
 
 <script setup lang="ts">
+import { useAuth } from "#imports";
+import { useModal } from "#imports";
+import SignUp from "../auth/SignUp.vue";
+import BookAuthorIcon from "../main/Icons/BookAuthorIcon.vue";
 interface Props {
   author: string;
+  isBookAuthor?: boolean;
+  isMember?: boolean;
 }
 
-const props = defineProps<Props>();
+const auth = useAuth();
+const modal = useModal();
+const { author, isBookAuthor, isMember } = defineProps<Props>();
 
 const isLoading = ref(true);
 
@@ -72,5 +92,17 @@ onMounted(() => {
     isLoading.value = false;
   }, 300);
 });
+
+const handleFollow = () => {
+  if (!auth.user) {
+    modal.open(SignUp, {
+      title: `Never miss a story from ${author}.`,
+      subtitle:
+        "Create a Medium account to follow your favorite authors, publications,and topics.",
+    });
+
+    //  else do follow logic
+  }
+};
 </script>
 <style scoped></style>
