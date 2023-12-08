@@ -10,11 +10,11 @@
       >
         <div>
           <NuxtLink to="/">
-            <TheLogo />
+            <TheLogo class="h-[25px]" />
           </NuxtLink>
         </div>
         <div class="flex items-center">
-          <NuxtLink to="/" class="text-sm font-light mr-[25px]"
+          <NuxtLink to="/about" class="text-sm font-light mr-[25px]"
             >Our story</NuxtLink
           >
           <NuxtLink to="/" class="text-sm font-light leading-5 mr-[25px]"
@@ -43,9 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
 import TheLogo from "./TheLogo.vue";
-import { useModal } from "#imports";
 import SignIn from "../auth/SignIn.vue";
 import SignUp from "../auth/SignUp.vue";
 

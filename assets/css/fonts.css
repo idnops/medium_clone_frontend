@@ -1,60 +1,32 @@
 @font-face {
     font-family: 'Sohne';
-    src: url('/fonts/Test-Söhne/TestSöhne-Extraleicht.otf') format('truetype');
-    font-style: normal;
-    font-weight: 200;
-}
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/Test-Söhne/TestSöhne-Leicht.otf') format('truetype');
-    font-style: normal;
-    font-weight: 300;
-}
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/Test-Söhne/TestSöhne-Leicht.otf') format('truetype');
+    src: url('/fonts/Test-Söhne/sohne-400-normal.woff') format('woff');
     font-style: normal;
     font-weight: 400;
 }
 @font-face {
     font-family: 'Sohne';
-    src: url('/fonts/Test-Söhne/TestSöhne-Kräftig.otf') format('truetype');
+    src: url('/fonts/Test-Söhne/sohne-500-normal.woff') format('woff');
     font-style: normal;
     font-weight: 500;
 }
 @font-face {
     font-family: 'Sohne';
-    src: url('/fonts/Test-Söhne/TestSöhne-Halbfett.otf') format('truetype');
-    font-style: normal;
-    font-weight: 600;
-}
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/Test-Söhne/TestSöhne-Dreiviertelfett.otf') format('truetype');
+    src: url('/fonts/Test-Söhne/sohne-700-normal.woff') format('woff');
     font-style: normal;
     font-weight: 700;
 }
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/Test-Söhne/TestSöhne-Fett.otf') format('truetype');
-    font-style: normal;
-    font-weight: 800;
-}
-@font-face {
-    font-family: 'Sohne';
-    src: url('/fonts/Test-Söhne/TestSöhne-Extrafett.otf') format('truetype');
-    font-style: normal;
-    font-weight: 900;
-}
-
-
-
-
 
 @font-face {
     font-family: 'Gt-super';
-    src: 
-        url('/fonts/GT-Super/GT-Super-Text-Book-Trial.otf') format('truetype');
+    src: url('/fonts/GT-Super/gt-super-400-normal.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Source-serif';
+    src: url('/fonts/Source-serif/source-serif-pro-400-normal.woff') format('woff');
     font-style: normal;
     font-weight: normal;
 }

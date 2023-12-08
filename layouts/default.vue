@@ -1,9 +1,19 @@
 <template>
   <div>
     <TheNavigationMain />
-    <main>
-      <slot />
-    </main>
+    <div class="mx-auto max-w-[1336px]">
+      <div class="flex flex-row justify-evenly">
+        <main class="min-w-[728px] max-w-[728px] flex-auto">
+          <slot name="main" />
+        </main>
+        <div
+          class="min-w-[368px] max-w-[368px] border-l border-neutral-100 pl-10 pr-6 min-h-screen"
+        >
+          <slot name="aside" />
+        </div>
+      </div>
+    </div>
+
     <UiModal />
   </div>
 </template>

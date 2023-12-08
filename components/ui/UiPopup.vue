@@ -5,7 +5,7 @@
         <div>
           <slot name="content" v-if="isShown" />
         </div>
-        <div class="arrow" data-popper-arrow></div>
+        <div class="arrow" :data-popper-arrow="fixedArrow ? null : ''"></div>
       </div>
     </div>
 
@@ -17,9 +17,17 @@
 import { createPopper } from "@popperjs/core";
 import type { Placement } from "@popperjs/core";
 
-const props = defineProps<{
+interface Props {
   placement: Placement;
-}>();
+  type?: string;
+  offset: number[];
+  fixedArrow?: boolean | null;
+}
+
+const { placement, type, offset } = withDefaults(defineProps<Props>(), {
+  offset: () => [0, 16],
+  fixedArrow: null,
+});
 
 const popperInstance = ref();
 const popcorn = ref();
@@ -28,18 +36,23 @@ const interval = ref();
 const isShown = ref(false);
 
 onMounted(() => {
-  useEventListener(popcorn.value, "mouseenter", showAndUpdate);
-  useEventListener(popcorn.value, "mouseleave", hide);
-  useEventListener(tooltip.value, "mouseenter", show);
-  useEventListener(tooltip.value, "mouseleave", hide);
+  if (type === "click") {
+    useEventListener(popcorn.value, "click", showAndUpdate);
+    onClickOutside(tooltip.value, hideOnClick);
+  } else {
+    useEventListener(popcorn.value, "mouseenter", showAndUpdate);
+    useEventListener(popcorn.value, "mouseleave", hide);
+    useEventListener(tooltip.value, "mouseenter", show);
+    useEventListener(tooltip.value, "mouseleave", hide);
+  }
 
   popperInstance.value = createPopper(popcorn.value, tooltip.value, {
-    placement: props.placement,
+    placement: placement,
     modifiers: [
       {
         name: "offset",
         options: {
-          offset: [0, 16],
+          offset,
         },
       },
     ],
@@ -59,12 +72,16 @@ const showAndUpdate = (): void => {
   popperInstance.value.update();
 };
 
-
 const hide = (): void => {
   interval.value = setTimeout(() => {
     tooltip.value.removeAttribute("data-show");
     isShown.value = false;
   }, 200);
+};
+
+const hideOnClick = (): void => {
+  tooltip.value.removeAttribute("data-show");
+  isShown.value = false;
 };
 
 const setSlotRef = (el: any): void => {
@@ -111,7 +128,8 @@ const setSlotRef = (el: any): void => {
 }
 
 .tooltip[data-popper-placement^="bottom"] > div > .arrow {
-  top: -6px;
+  top: -4px;
+  left: 32px;
 }
 
 .tooltip[data-popper-placement^="left"] > div > .arrow {

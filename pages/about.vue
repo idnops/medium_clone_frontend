@@ -1,7 +1,8 @@
 <template>
   <div>
     <NuxtLayout name="default">
-      <div class="min-h-screen"></div>
+      <template v-slot:main>defaultcontent</template>
+      <template v-slot:aside>aside content</template>
     </NuxtLayout>
   </div>
 </template>

@@ -6,6 +6,7 @@
     <div class="mt-12">
       <button
         class="rounded-full border border-black px-2.5 py-2 flex justify-between items-center w-[300px] mt-3"
+        @click="handleSignInWithGoogle"
       >
         <Icon name="flat-color-icons:google" size="20" />
         <span>Sign in with Google</span>
@@ -71,6 +72,7 @@ import SignInWithEmail from "./SignInWithEmail.vue";
 import SignUp from "./SignUp.vue";
 
 const modal = useModal();
+const auth = useAuth();
 
 const handleSignUp = (): void => {
   modal.open(SignUp);
@@ -78,6 +80,12 @@ const handleSignUp = (): void => {
 
 const handleSignInWithEmail = (): void => {
   modal.open(SignInWithEmail);
+};
+
+const handleSignInWithGoogle = (): void => {
+  auth.setUser();
+  modal.close();
+  // navigateTo("/");
 };
 </script>
 

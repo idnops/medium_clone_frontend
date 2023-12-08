@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NuxtLayout name="initial">
+    <NuxtLayout :name="layout">
       <TheHero />
       <TheTrendingPosts :posts="posts.slice(0, 6)" />
       <div class="pt-14 border-t-neutral-100 border-t">
@@ -29,6 +29,10 @@ import TheHero from "../components/main/TheHero.vue";
 import type { PostDto } from "../components/post/dto/Post.dto";
 import TheSidebar from "~/components/main/TheSidebar.vue";
 
+const auth = useAuth();
+const layout = computed(() => {
+  return auth.user ? "default" : "initial";
+});
 const tags = reactive([
   "Programming",
   "Data Science",
