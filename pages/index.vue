@@ -1,20 +1,24 @@
 <template>
-  <TheHero />
-  <TheTrendingPosts :posts="posts.slice(0, 6)" />
-  <div class="pt-14 border-t-neutral-100 border-t">
-    <div class="container mx-auto">
-      <div class="grid-cols-12 grid">
-        <section class="row-start-1 col-start-1 col-span-7">
-          <div class="py-3">
-            <ThePostList :posts="posts" />
+  <div>
+    <NuxtLayout name="initial">
+      <TheHero />
+      <TheTrendingPosts :posts="posts.slice(0, 6)" />
+      <div class="pt-14 border-t-neutral-100 border-t">
+        <div class="container mx-auto">
+          <div class="grid-cols-12 grid">
+            <section class="row-start-1 col-start-1 col-span-7">
+              <div class="py-3">
+                <ThePostList :posts="posts" />
+              </div>
+            </section>
+            <aside class="row-start-1 col-start-9 col-span-4">
+              <TheSidebar :tags="tags" :links="links" />
+            </aside>
+            <div class="min-h-screen"></div>
           </div>
-        </section>
-        <aside class="row-start-1 col-start-9 col-span-4">
-          <TheSidebar :tags="tags" :links="links" />
-        </aside>
-        <div class="min-h-screen"></div>
+        </div>
       </div>
-    </div>
+    </NuxtLayout>
   </div>
 </template>
 
@@ -117,8 +121,7 @@ const posts = reactive<PostDto[]>([
   {
     id: 8,
     author: "Lyman Stone",
-    community: "How Many Hobbits? A Demographic Analysis of Middle Earth",
-    title: "Data Quality Score: The next chapter of data quality at Airbnb",
+    title: "How Many Hobbits? A Demographic Analysis of Middle Earth",
     date: "Dec 6",
     duration: "16",
     isMemberOnly: false,

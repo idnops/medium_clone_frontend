@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TheNavigationMain />
+    <TheNavigationAmber />
     <main>
       <slot />
     </main>
@@ -9,10 +9,11 @@
 </template>
 
 <script setup lang="ts">
-import TheNavigationMain from "../components/nav/TheNavigationMain.vue";
+import TheNavigationAmber from "~/components/nav/TheNavigationAmber.vue";
 import UiModal from "../components/ui/UiModal.vue";
 const modal = useModal();
 const { isOpen } = storeToRefs(modal);
+
 useHead({
   bodyAttrs: {
     class: {
