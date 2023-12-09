@@ -31,7 +31,7 @@
         <div class="flex items-center">
           <button
             @click="handleSignUp"
-            class="bg-[#1A8917] text-sm px-[12px] py-[5px] text-white rounded-full border border-green-600"
+            class="border bg-green-600 border-green-600 hover:bg-green-800 hover:border-green-800 text-sm px-[12px] py-[5px] text-white rounded-full"
           >
             Sign up
           </button>
@@ -42,7 +42,7 @@
           </div>
         </div>
       </div>
-      <div class="h-8 w-8 rounded-full border border-neutral-100"></div>
+      <TheProfileMenu />
     </div>
   </div>
 </template>
@@ -51,6 +51,7 @@
 import TheLogo from "./TheLogo.vue";
 import TheLogoSmall from "./TheLogoSmall.vue";
 import TheSearchBox from "./TheSearchBox.vue";
+import TheProfileMenu from "./TheProfileMenu.vue";
 import PencilBoxIcon from "./icons/PencilBoxIcon.vue";
 import BellIcon from "./icons/BellIcon.vue";
 import SignUp from "../auth/SignUp.vue";

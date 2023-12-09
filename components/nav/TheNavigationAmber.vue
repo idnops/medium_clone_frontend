@@ -31,7 +31,7 @@
           </button>
           <button
             class="rounded-full text-sm font-light leading-5 text-white px-[17px] py-[9px] transition-colors duration-500"
-            :class="isScrolled ? 'bg-green-700' : 'bg-black'"
+            :class="isScrolled ? 'bg-green-600 hover:bg-green-800' : 'bg-black'"
             @click="handleSignUp"
           >
             Get started

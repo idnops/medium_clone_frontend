@@ -1,11 +1,15 @@
 <template>
-  <div>
+  <div ref="wrapper">
     <div ref="tooltip" class="tooltip rounded-[4px] z-10">
       <div class="bg-white rounded-[4px]">
         <div>
           <slot name="content" v-if="isShown" />
         </div>
-        <div class="arrow" :data-popper-arrow="fixedArrow ? null : ''"></div>
+        <div
+          class="arrow"
+          :data-popper-arrow="fixedArrow ? null : ''"
+          v-if="!noArrow"
+        ></div>
       </div>
     </div>
 
@@ -22,14 +26,20 @@ interface Props {
   type?: string;
   offset: number[];
   fixedArrow?: boolean | null;
+  noArrow?: boolean;
 }
 
-const { placement, type, offset } = withDefaults(defineProps<Props>(), {
-  offset: () => [0, 16],
-  fixedArrow: null,
-});
+const { placement, type, offset, noArrow } = withDefaults(
+  defineProps<Props>(),
+  {
+    offset: () => [0, 16],
+    fixedArrow: null,
+    noArrow: false,
+  }
+);
 
 const popperInstance = ref();
+const wrapper = ref();
 const popcorn = ref();
 const tooltip = ref();
 const interval = ref();
@@ -37,8 +47,8 @@ const isShown = ref(false);
 
 onMounted(() => {
   if (type === "click") {
-    useEventListener(popcorn.value, "click", showAndUpdate);
-    onClickOutside(tooltip.value, hideOnClick);
+    useEventListener(popcorn.value, "click", toggleClick);
+    onClickOutside(wrapper.value, hideOnClick);
   } else {
     useEventListener(popcorn.value, "mouseenter", showAndUpdate);
     useEventListener(popcorn.value, "mouseleave", hide);
@@ -77,6 +87,13 @@ const hide = (): void => {
     tooltip.value.removeAttribute("data-show");
     isShown.value = false;
   }, 200);
+};
+
+const toggleClick = (): void => {
+  isShown.value
+    ? tooltip.value.removeAttribute("data-show")
+    : tooltip.value.setAttribute("data-show", "");
+  isShown.value = !isShown.value;
 };
 
 const hideOnClick = (): void => {

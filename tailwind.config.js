@@ -10,6 +10,12 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        green: {
+          600: "#1A8917",
+          800: "#156D12",
+        },
+      },
       keyframes: {
         wiggle: {
           "0%": { transform: "translateX(-1%)" },
