@@ -21,6 +21,8 @@
           @focus="handleFocus"
           @blur="handleBlur"
           :ref="(el) => setRef(el)"
+          v-model="query"
+          @keydown="handleSubmit"
         />
       </template>
 
@@ -32,8 +34,11 @@
 </template>
 
 <script setup lang="ts">
+import useSearchQuery from "~/stores/search";
 import RecentSearches from "./RecentSearches.vue";
 const isFocused = ref(false);
+const query = ref();
+const searchQuery = useSearchQuery();
 
 const handleFocus = (): void => {
   isFocused.value = true;
@@ -41,6 +46,12 @@ const handleFocus = (): void => {
 
 const handleBlur = (): void => {
   isFocused.value = false;
+};
+
+const handleSubmit = (e: KeyboardEvent): void => {
+  if (e.key === "Enter") {
+    searchQuery.updateQueries(query.value);
+  }
 };
 </script>
 

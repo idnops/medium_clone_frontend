@@ -24,7 +24,7 @@ import type { Placement } from "@popperjs/core";
 interface Props {
   placement: Placement;
   type?: string;
-  offset: number[];
+  offset?: number[];
   fixedArrow?: boolean | null;
   noArrow?: boolean;
 }
@@ -90,6 +90,8 @@ const hide = (): void => {
 };
 
 const toggleClick = (): void => {
+  popperInstance.value.update();
+
   isShown.value
     ? tooltip.value.removeAttribute("data-show")
     : tooltip.value.setAttribute("data-show", "");

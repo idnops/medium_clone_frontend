@@ -18,6 +18,13 @@
           </div>
         </div>
       </div>
+
+      <template v-slot:main
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam vero
+        quasi consequuntur autem eos dolores aspernatur exercitationem
+        voluptate, quibusdam delectus. Debitis consectetur ut adipisci eveniet
+        sequi dicta quibusdam enim velit.</template
+      >
     </NuxtLayout>
   </div>
 </template>
