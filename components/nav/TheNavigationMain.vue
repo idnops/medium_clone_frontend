@@ -1,5 +1,12 @@
 <template>
-  <div class="">
+  <div
+    class="sticky top-0"
+    :style="[
+      y < 57
+        ? `transform: TranslateY(${0 - y}px)`
+        : `transform: TranslateY(${-57}px)`,
+    ]"
+  >
     <div class="flex items-center h-[57px] border-b border-neutral-100 px-6">
       <div class="flex flex-[1_0_auto] items-center">
         <NuxtLink to="/">
@@ -8,6 +15,10 @@
         </NuxtLink>
         <div class="ml-4">
           <TheSearchBox />
+        </div>
+        <div>
+          {{ isScrollingUp }}
+          {{ lastScrollPos }}
         </div>
       </div>
       <div class="flex">
@@ -56,7 +67,18 @@ import PencilBoxIcon from "./icons/PencilBoxIcon.vue";
 import BellIcon from "./icons/BellIcon.vue";
 import SignUp from "../auth/SignUp.vue";
 import SignIn from "../auth/SignIn.vue";
+import { useWindowScroll } from "@vueuse/core";
 
+const { y } = useWindowScroll();
+const isScrollingUp = ref(false);
+const lastScrollPos = ref(0);
+
+watch(y, (val, oldVal) => {
+  if (!isScrollingUp.value && oldVal > val) {
+    isScrollingUp.value = true;
+    lastScrollPos.value = val;
+  }
+});
 const auth = useAuth();
 const modal = useModal();
 

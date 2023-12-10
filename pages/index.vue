@@ -19,12 +19,18 @@
         </div>
       </div>
 
-      <template v-slot:main
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam vero
-        quasi consequuntur autem eos dolores aspernatur exercitationem
-        voluptate, quibusdam delectus. Debitis consectetur ut adipisci eveniet
-        sequi dicta quibusdam enim velit.</template
-      >
+      <template v-slot:main>
+        <div
+          class="h-[55px] border-b border-neutral-100 sticky flex items-center"
+          :style="y > 55 ? 'top:0px' : `top:${55 - y}px`"
+        >
+          Y position {{ y }}
+        </div>
+      </template>
+
+      <template v-slot:aside>
+        <div class="min-h-[200vh]"></div>
+      </template>
     </NuxtLayout>
   </div>
 </template>
@@ -35,6 +41,9 @@ import ThePostList from "~/components/main/ThePostList.vue";
 import TheHero from "../components/main/TheHero.vue";
 import type { PostDto } from "../components/post/dto/Post.dto";
 import TheSidebar from "~/components/main/TheSidebar.vue";
+import { useWindowScroll } from "@vueuse/core";
+
+const { y } = useWindowScroll();
 
 const auth = useAuth();
 const layout = computed(() => {
