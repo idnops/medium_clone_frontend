@@ -8,10 +8,12 @@ const getQueries = () => {
 
 const useSearchQuery = defineStore("searchQuery", {
   state: () => ({
-    queries: [] as string[],
+    // queries: [] as string[],
+    queries: useStorage('search_queries', [] as string[])
   }),
   hydrate(state, initialState) {
     state.queries = getQueries();
+    // state.queries = useStorage('search_queries', [] as string[])
   },
   actions: {
     updateQueries(query: string) {
