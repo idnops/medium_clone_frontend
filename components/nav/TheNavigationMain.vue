@@ -1,13 +1,14 @@
 <template>
   <div
-    class="sticky top-0"
-    :style="[
-      y < 57
-        ? `transform: TranslateY(${0 - y}px)`
-        : `transform: TranslateY(${-57}px)`,
-    ]"
+    class="sticky top-0 bg-white"
+    :style="style"
+    ref="navBar"
+    :data-scroll="currentScrollPos"
   >
-    <div class="flex items-center h-[57px] border-b border-neutral-100 px-6">
+    <div
+      class="flex items-center h-[57px] border-b border-neutral-100 px-6"
+      ref="navBar"
+    >
       <div class="flex flex-[1_0_auto] items-center">
         <NuxtLink to="/">
           <TheLogo class="h-[22px]" v-if="!auth.user" />
@@ -16,10 +17,7 @@
         <div class="ml-4">
           <TheSearchBox />
         </div>
-        <div>
-          {{ isScrollingUp }}
-          {{ lastScrollPos }}
-        </div>
+        <div class="p-2 font-medium"></div>
       </div>
       <div class="flex">
         <div class="flex mr-8">
@@ -67,18 +65,40 @@ import PencilBoxIcon from "./icons/PencilBoxIcon.vue";
 import BellIcon from "./icons/BellIcon.vue";
 import SignUp from "../auth/SignUp.vue";
 import SignIn from "../auth/SignIn.vue";
-import { useWindowScroll } from "@vueuse/core";
+import { useWindowScroll, useEventListener } from "@vueuse/core";
 
 const { y } = useWindowScroll();
-const isScrollingUp = ref(false);
 const lastScrollPos = ref(0);
+const currentScrollPos = ref(0);
+const navBar = ref();
 
-watch(y, (val, oldVal) => {
-  if (!isScrollingUp.value && oldVal > val) {
-    isScrollingUp.value = true;
-    lastScrollPos.value = val;
-  }
+onMounted(() => {
+  useEventListener("scroll", handleScroll);
 });
+
+const handleScroll = () => {
+  const scrollDistance = y.value - lastScrollPos.value;
+  const elementScrollPos = parseInt(navBar.value.getAttribute("data-scroll"));
+  const elementHeight = parseInt(navBar.value.offsetHeight);
+
+  let amount = Math.max(
+    Math.min(
+      elementScrollPos +
+        (scrollDistance < 0
+          ? Math.abs(scrollDistance)
+          : -Math.abs(scrollDistance)),
+      0
+    ),
+    -elementHeight
+  );
+  currentScrollPos.value = amount;
+  lastScrollPos.value = y.value;
+};
+
+const style = computed(() => {
+  return `transform: translateY(${currentScrollPos.value}px)`;
+});
+
 const auth = useAuth();
 const modal = useModal();
 

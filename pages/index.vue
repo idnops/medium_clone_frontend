@@ -20,12 +20,7 @@
       </div>
 
       <template v-slot:main>
-        <div
-          class="h-[55px] border-b border-neutral-100 sticky flex items-center"
-          :style="y > 55 ? 'top:0px' : `top:${55 - y}px`"
-        >
-          Y position {{ y }}
-        </div>
+        <TheChipScroller v-if="false" />
       </template>
 
       <template v-slot:aside>
@@ -41,10 +36,7 @@ import ThePostList from "~/components/main/ThePostList.vue";
 import TheHero from "../components/main/TheHero.vue";
 import type { PostDto } from "../components/post/dto/Post.dto";
 import TheSidebar from "~/components/main/TheSidebar.vue";
-import { useWindowScroll } from "@vueuse/core";
-
-const { y } = useWindowScroll();
-
+import TheChipScroller from "~/components/main/TheChipScroller.vue";
 const auth = useAuth();
 const layout = computed(() => {
   return auth.user ? "default" : "initial";
