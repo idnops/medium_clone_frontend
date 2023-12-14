@@ -1,14 +1,6 @@
 <template>
-  <div
-    class="sticky top-0 bg-white"
-    :style="style"
-    ref="navBar"
-    :data-scroll="currentScrollPos"
-  >
-    <div
-      class="flex items-center h-[57px] border-b border-neutral-100 px-6"
-      ref="navBar"
-    >
+  <div class="sticky top-0 bg-white" :style="style" ref="navigation">
+    <div class="flex items-center h-[57px] border-b border-neutral-100 px-6">
       <div class="flex flex-[1_0_auto] items-center">
         <NuxtLink to="/">
           <TheLogo class="h-[22px]" v-if="!auth.user" />
@@ -65,38 +57,12 @@ import PencilBoxIcon from "./icons/PencilBoxIcon.vue";
 import BellIcon from "./icons/BellIcon.vue";
 import SignUp from "../auth/SignUp.vue";
 import SignIn from "../auth/SignIn.vue";
-import { useWindowScroll, useEventListener } from "@vueuse/core";
 
-const { y } = useWindowScroll();
-const lastScrollPos = ref(0);
-const currentScrollPos = ref(0);
-const navBar = ref();
-
-onMounted(() => {
-  useEventListener("scroll", handleScroll);
-});
-
-const handleScroll = () => {
-  const scrollDistance = y.value - lastScrollPos.value;
-  const elementScrollPos = parseInt(navBar.value.getAttribute("data-scroll"));
-  const elementHeight = parseInt(navBar.value.offsetHeight);
-
-  let amount = Math.max(
-    Math.min(
-      elementScrollPos +
-        (scrollDistance < 0
-          ? Math.abs(scrollDistance)
-          : -Math.abs(scrollDistance)),
-      0
-    ),
-    -elementHeight
-  );
-  currentScrollPos.value = amount;
-  lastScrollPos.value = y.value;
-};
+const navigation = ref<HTMLElement | null>(null);
+const { scroll } = useHideOnScroll(navigation, 0, -57);
 
 const style = computed(() => {
-  return `transform: translateY(${currentScrollPos.value}px)`;
+  return `transform: translateY(${scroll.value}px)`;
 });
 
 const auth = useAuth();

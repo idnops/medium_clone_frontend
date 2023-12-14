@@ -20,7 +20,13 @@
       </div>
 
       <template v-slot:main>
-        <TheChipScroller v-if="false" />
+        <div class="pt-6"></div>
+        <TheChipScroller />
+        <div class="p-2">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas
+          sequi eligendi iusto sapiente officia ipsa fugit harum magni! Ipsa ex
+          repellendus iusto earum neque amet? Reiciendis nihil eum autem vero?
+        </div>
       </template>
 
       <template v-slot:aside>
