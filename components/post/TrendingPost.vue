@@ -61,11 +61,9 @@
           class="text-neutral-700 text-[13px] leading-5 flex items-center gap-2 font-light"
         >
           <span> {{ post.date }} · {{ post.duration }} min read </span>
-          <Icon
-            name="streamline:star-2-solid"
-            class="text-amber-400"
-            v-if="post.isMemberOnly"
-          />
+          <div v-if="post.isMemberOnly" class="text-base">
+            <MemberOnly icon-only />
+          </div>
         </div>
       </div>
     </div>
@@ -77,6 +75,7 @@ import type { PostDto } from "./dto/Post.dto";
 
 import AuthorCard from "../cards/AuthorCard.vue";
 import BookAuthorIcon from "../main/Icons/BookAuthorIcon.vue";
+import MemberOnly from "../utils/MemberOnly.vue";
 
 interface Props {
   post: PostDto;

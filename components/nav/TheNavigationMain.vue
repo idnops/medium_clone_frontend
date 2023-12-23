@@ -1,5 +1,5 @@
 <template>
-  <div class="sticky top-0 bg-white" :style="style" ref="navigation">
+  <div class="sticky top-0 bg-white z-50" :style="style" ref="navigation">
     <div class="flex items-center h-[57px] border-b border-neutral-100 px-6">
       <div class="flex flex-[1_0_auto] items-center">
         <NuxtLink to="/">
@@ -14,7 +14,9 @@
       <div class="flex">
         <div class="flex mr-8">
           <NuxtLink to="/about">
-            <div class="flex items-center text-sm text-neutral-500">
+            <div
+              class="flex items-center text-sm text-neutral-500 hover:text-neutral-800"
+            >
               <PencilBoxIcon />
               <div class="ml-2">Write</div>
             </div>
@@ -23,7 +25,7 @@
       </div>
       <div class="mr-8" v-if="auth.user">
         <NuxtLink to="/">
-          <div class="text-neutral-500">
+          <div class="text-neutral-500 hover:text-neutral-800">
             <BellIcon />
           </div>
         </NuxtLink>

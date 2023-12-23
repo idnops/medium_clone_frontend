@@ -87,33 +87,43 @@
           </div>
           <div class="py-[18px] border-b border-neutral-100" v-if="auth.user">
             <NuxtLink to="/">
-              <div class="py-[6px] px-6 text-neutral-600 text-sm">
+              <div
+                class="py-[6px] px-6 text-neutral-500 hover:text-neutral-800 text-sm"
+              >
                 <div class="flex items-center justify-between">Settings</div>
               </div>
             </NuxtLink>
             <NuxtLink to="/">
-              <div class="py-[6px] px-6 text-neutral-600 text-sm">
+              <div
+                class="py-[6px] px-6 text-neutral-500 hover:text-neutral-800 text-sm"
+              >
                 <div class="flex items-center justify-between">
                   Refine recommendations
                 </div>
               </div>
             </NuxtLink>
             <NuxtLink to="/">
-              <div class="py-[6px] px-6 text-neutral-600 text-sm">
+              <div
+                class="py-[6px] px-6 text-neutral-500 hover:text-neutral-800 text-sm"
+              >
                 <div class="flex items-center justify-between">
                   Manage publications
                 </div>
               </div>
             </NuxtLink>
             <NuxtLink to="/">
-              <div class="py-[6px] px-6 text-neutral-600 text-sm">
+              <div
+                class="py-[6px] px-6 text-neutral-500 hover:text-neutral-800 text-sm"
+              >
                 <div class="flex items-center justify-between">Help</div>
               </div>
             </NuxtLink>
           </div>
           <div class="py-[18px] border-b border-neutral-100">
             <NuxtLink to="/">
-              <div class="py-[6px] px-6 text-neutral-600 text-sm">
+              <div
+                class="py-[6px] px-6 text-neutral-500 hover:text-neutral-800 text-sm"
+              >
                 <div class="flex items-center justify-between">
                   Become a Medium member
                   <StarIcon class="w-4 h-4" />
@@ -121,28 +131,36 @@
               </div>
             </NuxtLink>
             <NuxtLink to="/">
-              <div class="py-[6px] px-6 text-neutral-600 text-sm">
+              <div
+                class="py-[6px] px-6 text-neutral-500 hover:text-neutral-800 text-sm"
+              >
                 <div class="flex items-center justify-between">
                   Create a Mastodon account
                 </div>
               </div>
             </NuxtLink>
             <NuxtLink to="/">
-              <div class="py-[6px] px-6 text-neutral-600 text-sm">
+              <div
+                class="py-[6px] px-6 text-neutral-500 hover:text-neutral-800 text-sm"
+              >
                 <div class="flex items-center justify-between">
                   Apply for author verification
                 </div>
               </div>
             </NuxtLink>
             <NuxtLink to="/">
-              <div class="py-[6px] px-6 text-neutral-600 text-sm">
+              <div
+                class="py-[6px] px-6 text-neutral-500 hover:text-neutral-800 text-sm"
+              >
                 <div class="flex items-center justify-between">
                   Apply to the Partner Program
                 </div>
               </div>
             </NuxtLink>
             <NuxtLink to="/">
-              <div class="py-[6px] px-6 text-neutral-600 text-sm">
+              <div
+                class="py-[6px] px-6 text-neutral-500 hover:text-neutral-800 text-sm"
+              >
                 <div class="flex items-center justify-between">
                   Gift a membership
                 </div>

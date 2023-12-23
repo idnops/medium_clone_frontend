@@ -44,6 +44,7 @@ export default {
         "serif",
       ],
       sans: ["Sohne"],
+      source: ["Source-serif"],
     },
   },
   plugins: [],

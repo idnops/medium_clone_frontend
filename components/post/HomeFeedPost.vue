@@ -77,11 +77,9 @@
                 >
               </div>
             </NuxtLink>
-            <Icon
-              name="streamline:star-2-solid"
-              class="text-amber-400"
-              v-if="post.isMemberOnly"
-            />
+            <div class="text-base" v-if="post.isMemberOnly">
+              <MemberOnly icon-only />
+            </div>
           </div>
           <div
             class="text-neutral-500 hover:text-neutral-900 flex items-center"
@@ -113,6 +111,7 @@ import AuthorCard from "../cards/AuthorCard.vue";
 import BookAuthorIcon from "../main/Icons/BookAuthorIcon.vue";
 import BookmarkIcon from "../main/Icons/BookmarkIcon.vue";
 import SignUp from "../auth/SignUp.vue";
+import MemberOnly from "../utils/MemberOnly.vue";
 
 interface Props {
   post: PostDto;

@@ -8,7 +8,11 @@
           <div class="grid-cols-12 grid">
             <section class="row-start-1 col-start-1 col-span-7">
               <div class="py-3">
-                <ThePostList :posts="posts" />
+                <HomeFeedPost
+                  v-for="post in posts"
+                  :key="post.id"
+                  :post="post"
+                />
               </div>
             </section>
             <aside class="row-start-1 col-start-9 col-span-4">
@@ -22,10 +26,13 @@
       <template v-slot:main>
         <div class="pt-6"></div>
         <TheChipScroller />
-        <div class="p-2">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas
-          sequi eligendi iusto sapiente officia ipsa fugit harum magni! Ipsa ex
-          repellendus iusto earum neque amet? Reiciendis nihil eum autem vero?
+        <div class="pt-[50px]">
+          <MainFeedPost
+            v-for="(post, i) in posts"
+            :key="post.id"
+            :post="post"
+            :index="i"
+          />
         </div>
       </template>
 
@@ -38,11 +45,12 @@
 
 <script setup lang="ts">
 import TheTrendingPosts from "~/components/main/TheTrendingPosts.vue";
-import ThePostList from "~/components/main/ThePostList.vue";
 import TheHero from "../components/main/TheHero.vue";
 import type { PostDto } from "../components/post/dto/Post.dto";
 import TheSidebar from "~/components/main/TheSidebar.vue";
 import TheChipScroller from "~/components/main/TheChipScroller.vue";
+import HomeFeedPost from "~/components/post/HomeFeedPost.vue";
+import MainFeedPost from "~/components/post/MainFeedPost.vue";
 const auth = useAuth();
 const layout = computed(() => {
   return auth.user ? "default" : "initial";
@@ -76,7 +84,7 @@ const posts = reactive<PostDto[]>([
     id: 1,
     author: "Natalie Worth",
     community: "UX collective",
-    title: "Is technology harming our brains?",
+    title: "Upcoming Vue 3 “Vapor Mode”",
     date: "Dec 3",
     duration: "4",
     isMemberOnly: false,
@@ -97,7 +105,7 @@ const posts = reactive<PostDto[]>([
       "How a Professor’s One Piece of Advice Influenced My Entire Writing Career",
     date: "Nov 26",
     duration: "9",
-    isMemberOnly: false,
+    isMemberOnly: true,
     isBookAuthor: true,
   },
   {

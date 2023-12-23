@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-[55px] bg-white sticky flex items-center"
+    class="h-[55px] bg-white sticky flex items-center z-[500]"
     :style="style"
     ref="chipScroller"
   >
@@ -122,6 +122,7 @@
               </div>
             </div>
             <div
+              v-show="!arrivedState.right"
               class="pl-[42px] absolute bottom-3 right-0 flex items-center bg-gradient-to-r from-white/0 via-white/80 via-25% to-white to-90%"
             >
               <button

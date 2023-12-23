@@ -1,6 +1,6 @@
 <template>
   <div ref="wrapper">
-    <div ref="tooltip" class="tooltip rounded-[4px] z-10">
+    <div ref="tooltip" class="tooltip rounded-[4px] z-[500]">
       <div class="bg-white rounded-[4px]">
         <div>
           <slot name="content" v-if="isShown" />
@@ -15,6 +15,11 @@
 
     <slot name="activator" :set-ref="setSlotRef" />
   </div>
+  <div
+    class="absolute top-0 right-0 bottom-0 left-0"
+    id="overlay"
+    v-if="isOverlayVisible"
+  ></div>
 </template>
 
 <script setup lang="ts">
@@ -27,14 +32,16 @@ interface Props {
   offset?: number[];
   fixedArrow?: boolean | null;
   noArrow?: boolean;
+  withOverlay?: boolean;
 }
 
-const { placement, type, offset, noArrow } = withDefaults(
+const { placement, type, offset, noArrow, withOverlay } = withDefaults(
   defineProps<Props>(),
   {
     offset: () => [0, 16],
     fixedArrow: null,
     noArrow: false,
+    withOverlay: false,
   }
 );
 
@@ -44,6 +51,7 @@ const popcorn = ref();
 const tooltip = ref();
 const interval = ref();
 const isShown = ref(false);
+const isOverlayVisible = ref(false);
 
 onMounted(() => {
   if (type === "click") {
@@ -90,16 +98,24 @@ const hide = (): void => {
 };
 
 const toggleClick = (): void => {
-  popperInstance.value.update();
-
-  isShown.value
-    ? tooltip.value.removeAttribute("data-show")
-    : tooltip.value.setAttribute("data-show", "");
-  isShown.value = !isShown.value;
+  if (isShown.value) {
+    tooltip.value.removeAttribute("data-show");
+    isOverlayVisible.value = false;
+    isShown.value = false;
+  } else {
+    if (withOverlay) {
+      isOverlayVisible.value = true;
+    }
+    tooltip.value.setAttribute("data-show", "");
+    isShown.value = true;
+    popperInstance.value.update();
+  }
 };
 
 const hideOnClick = (): void => {
   tooltip.value.removeAttribute("data-show");
+  isOverlayVisible.value = false;
+
   isShown.value = false;
 };
 
