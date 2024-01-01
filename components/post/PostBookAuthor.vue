@@ -17,7 +17,10 @@
 
       <template v-slot:activator="{ setRef }">
         <div :ref="(el) => setRef(el)">
-          <BookAuthorIcon class="mt-px ml-0.5" />
+          <BookAuthorIcon
+            class="mt-px ml-0.5"
+            :class="`w-${size / 4} h-${size / 4}`"
+          />
         </div>
       </template>
     </UiPopup>
@@ -30,9 +33,12 @@ import BookAuthorIcon from "../main/Icons/BookAuthorIcon.vue";
 
 interface Props {
   author: string;
+  size?: number;
 }
 
-const { author } = defineProps<Props>();
+const { author, size } = withDefaults(defineProps<Props>(), {
+  size: 16,
+});
 </script>
 
 <style scoped></style>
