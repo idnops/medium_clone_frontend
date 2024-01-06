@@ -17,7 +17,7 @@
               {{ post.author }}
             </h4>
           </NuxtLink>
-          <PostBookAuthor :author="post.author" v-if="post.isBookAuthor" />
+          <BookAuthorIcon class="mr-1" v-if="post.isBookAuthor" />
         </div>
         <div class="flex items-center" v-if="post.community">
           <h4 class="pr-0.5 text-[13px] leading-4 font-medium text-neutral-500">
@@ -44,6 +44,7 @@
 </template>
 
 <script setup lang="ts">
+import BookAuthorIcon from "../main/Icons/BookAuthorIcon.vue";
 import type { PostDto } from "../post/dto/Post.dto";
 interface Props {
   post: PostDto;
