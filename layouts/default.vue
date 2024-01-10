@@ -3,7 +3,9 @@
     <TheNavigationMain />
     <div class="mx-auto max-w-[1336px]">
       <div class="flex flex-row justify-evenly">
-        <main class="min-w-[728px] max-w-[728px] flex-auto">
+        <main
+          class="min-w-[728px] max-w-[728px] flex-auto text-left sm:text-center"
+        >
           <slot name="main" />
         </main>
         <div

@@ -46,6 +46,10 @@
             />
           </SidebarList>
 
+          <div class="mt-10 pb-[30px] border-b border-neutral-100">
+            <TwitterConnect />
+          </div>
+
           <SidebarList
             title="Recommended topics"
             url="/"
@@ -94,6 +98,7 @@ import TheSidebar from "~/components/main/TheSidebar.vue";
 import TheChipScroller from "~/components/main/TheChipScroller.vue";
 import HomeFeedPost from "~/components/post/HomeFeedPost.vue";
 import MainFeedPost from "~/components/post/MainFeedPost.vue";
+import TwitterConnect from "~/components/sidebar/TwitterConnect.vue";
 const auth = useAuth();
 const layout = computed(() => {
   return auth.user ? "default" : "initial";
