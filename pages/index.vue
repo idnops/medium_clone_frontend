@@ -37,8 +37,17 @@
       </template>
 
       <template v-slot:aside>
-        <div>
-          <SidebarList title="Staff Picks" url="/" link="See the full list">
+        <div
+          class="sticky"
+          :style="`top:calc(100vh - ${sidebarContent?.offsetHeight}px)`"
+          ref="sidebarContent"
+        >
+          <SidebarList
+            title="Staff Picks"
+            url="/"
+            action-text="See the full list"
+            is-title-link
+          >
             <SidebarPostItem
               v-for="post in posts.slice(0, 3)"
               :key="post.id"
@@ -52,8 +61,8 @@
 
           <SidebarList
             title="Recommended topics"
+            action-text="See more topics"
             url="/"
-            link="See more topics"
           >
             <div class="flex flex-wrap items-start mb-4">
               <div class="flex mb-[10px]" v-for="(tag, i) in tags" :key="i">
@@ -70,8 +79,8 @@
 
           <SidebarList
             title="Who to follow"
+            action-text="See more suggestions"
             url="/"
-            link="See more suggestions"
           >
             <div class="mb-4">
               <SidebarUserItem
@@ -84,6 +93,27 @@
               />
             </div>
           </SidebarList>
+
+          <SidebarList
+            title="Reading list"
+            :action-text="saved.length ? `See all (${saved.length})` : ''"
+            url="/"
+          >
+            <div v-if="saved.length">
+              <SidebarPostItem
+                v-for="post in saved.slice(0, 3)"
+                :key="post.id"
+                :post="post"
+                expanded
+              />
+            </div>
+            <p class="text-neutral-500 text-sm" v-else>
+              Click the <BookmarkIcon class="text-neutral-800 inline" /> on any
+              story to easily add it to your reading list or a custom list that
+              you can share.
+            </p>
+          </SidebarList>
+          <SidebarLinks :links="links" />
         </div>
       </template>
     </NuxtLayout>
@@ -91,18 +121,21 @@
 </template>
 
 <script setup lang="ts">
+import type { PostDto } from "../components/post/dto/Post.dto";
 import TheTrendingPosts from "~/components/main/TheTrendingPosts.vue";
 import TheHero from "../components/main/TheHero.vue";
-import type { PostDto } from "../components/post/dto/Post.dto";
 import TheSidebar from "~/components/main/TheSidebar.vue";
 import TheChipScroller from "~/components/main/TheChipScroller.vue";
 import HomeFeedPost from "~/components/post/HomeFeedPost.vue";
 import MainFeedPost from "~/components/post/MainFeedPost.vue";
 import TwitterConnect from "~/components/sidebar/TwitterConnect.vue";
+import BookmarkIcon from "~/components/main/Icons/BookmarkIcon.vue";
 const auth = useAuth();
 const layout = computed(() => {
   return auth.user ? "default" : "initial";
 });
+
+const sidebarContent = ref<HTMLElement | null>(null);
 const tags = reactive([
   "Programming",
   "Data Science",
@@ -116,15 +149,42 @@ const tags = reactive([
 ]);
 
 const links = reactive([
-  "Help",
-  "Status",
-  "About",
-  "Careers",
-  "Blog",
-  "Privacy",
-  "Terms",
-  "Text to speech",
-  "Teams",
+  {
+    name: "Help",
+    url: "help",
+  },
+  {
+    name: "Status",
+    url: "status",
+  },
+  {
+    name: "About",
+    url: "about",
+  },
+  {
+    name: "Careers",
+    url: "careers",
+  },
+  {
+    name: "Blog",
+    url: "blog",
+  },
+  {
+    name: "Privacy",
+    url: "privacy",
+  },
+  {
+    name: "Terms",
+    url: "terms",
+  },
+  {
+    name: "Text to speech",
+    url: "text-to-speech",
+  },
+  {
+    name: "Teams",
+    url: "teams",
+  },
 ]);
 
 const posts = reactive<PostDto[]>([
@@ -198,6 +258,44 @@ const posts = reactive<PostDto[]>([
     title: "How Many Hobbits? A Demographic Analysis of Middle Earth",
     date: "Dec 6",
     duration: "16",
+    isMemberOnly: false,
+  },
+]);
+
+const saved = reactive<PostDto[]>([
+  {
+    id: 8,
+    author: "Lyman Stone",
+    title: "How Many Hobbits? A Demographic Analysis of Middle Earth",
+    date: "Dec 6",
+    duration: "16",
+    isMemberOnly: false,
+  },
+  {
+    id: 7,
+    author: "Lessig",
+    title: "ChatGPT, or: How I Learned to Stop Worrying and Love AI",
+    date: "Nov 29",
+    duration: "7",
+    isMemberOnly: false,
+    isBookAuthor: true,
+  },
+  {
+    id: 4,
+    author: "Maevyn Frey",
+    community: "Fourth Wave",
+    title: "My Disability Was Fetishized When I Was a Child",
+    date: "Nov 24",
+    duration: "12",
+    isMemberOnly: true,
+  },
+  {
+    id: 5,
+    author: "Luka Bönisch",
+    community: "The Taoist Online",
+    title: "The Problem You Think You Have Is Never the Real Problem",
+    date: "Nov 24",
+    duration: "9",
     isMemberOnly: false,
   },
 ]);
