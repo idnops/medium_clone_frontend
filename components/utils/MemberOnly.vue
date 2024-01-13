@@ -6,7 +6,10 @@ from '../ui/UiPopup.vue';
       <template v-slot:activator="{ setRef }">
         <button class="flex items-center" :ref="(el) => setRef(el)">
           <StarIcon class="w-4 h-4" />
-          <p class="text-sm text-neutral-500 ml-0.5" v-if="!iconOnly">
+          <p
+            class="text-sm text-neutral-500 ml-0.5 hidden sm:block"
+            v-if="!iconOnly"
+          >
             Member-only
           </p>
         </button>

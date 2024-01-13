@@ -4,7 +4,7 @@
       <p class="text-sm text-neutral-500">in</p>
     </div>
     <NuxtLink to="/">
-      <p class="max-h-5 line-clamp-1 text-sm">
+      <p class="max-h-5 line-clamp-1 text-sm break-all">
         {{ community }}
       </p>
     </NuxtLink>

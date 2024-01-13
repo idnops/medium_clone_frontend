@@ -1,9 +1,9 @@
 <template>
-  <div class="h-8 w-8">
+  <div class="h-8 w-8 flex-[0_0_0px] block">
     <UiPopup placement="bottom-end" type="click" no-arrow :offset="[8, 8]">
       <template v-slot:activator="{ setRef }">
         <button :ref="(el) => setRef(el)">
-          <div class="relative">
+          <div class="relative h-8 w-8">
             <img src="/images/profile.png" alt="" class="rounded-full" />
             <div
               class="w-8 h-8 absolute rounded-full top-0 left-0 shadow-[inset_0_0_0_1px_rgba(0,0,0,0.05)] hover:bg-black/10"

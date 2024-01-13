@@ -6,12 +6,19 @@
           <TheLogo class="h-[22px]" v-if="!auth.user" />
           <TheLogoSmall class="h-[25px] fill-neutral-800" v-else />
         </NuxtLink>
-        <div class="ml-4">
+        <div class="ml-0 hidden xs:block xs:ml-4">
           <TheSearchBox />
         </div>
         <div class="p-2 font-medium"></div>
       </div>
-      <div class="flex">
+      <div class="mr-8 xs:hidden">
+        <NuxtLink to="/">
+          <div class="text-neutral-500 hover:text-neutral-800">
+            <Icon name="circum:search" size="24" />
+          </div>
+        </NuxtLink>
+      </div>
+      <div class="hidden sm:flex">
         <div class="flex mr-8">
           <NuxtLink to="/about">
             <div
@@ -23,6 +30,7 @@
           </NuxtLink>
         </div>
       </div>
+
       <div class="mr-8" v-if="auth.user">
         <NuxtLink to="/">
           <div class="text-neutral-500 hover:text-neutral-800">

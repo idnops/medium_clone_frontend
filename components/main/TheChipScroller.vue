@@ -1,11 +1,11 @@
 <template>
   <div
-    class="h-[55px] bg-white sticky flex items-center z-[500]"
+    class="h-[55px] bg-white sticky z-[500]"
     :style="style"
     ref="chipScroller"
   >
     <div class="flex justify-center">
-      <div class="max-w-[680px] mx-6">
+      <div class="max-w-[680px] mx-6 min-w-0 w-full">
         <div class="h-4"></div>
         <div
           class="h-[39px] overflow-hidden relative shadow-[inset_0_-1px_0_#F2F2F2]"

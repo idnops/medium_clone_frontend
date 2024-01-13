@@ -31,7 +31,10 @@ export default {
       },
     },
     screens: {
-      xl: "1192px",
+      xs: "552px",
+      sm: "728px",
+      md: "904px",
+      lg: "1080px",
     },
     fontFamily: {
       serif: [

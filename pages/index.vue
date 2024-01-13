@@ -4,21 +4,23 @@
       <TheHero />
       <TheTrendingPosts :posts="posts.slice(0, 6)" />
       <div class="pt-14 border-t-neutral-100 border-t">
-        <div class="container mx-auto">
-          <div class="grid-cols-12 grid">
-            <section class="row-start-1 col-start-1 col-span-7">
-              <div class="py-3">
-                <HomeFeedPost
-                  v-for="post in posts"
-                  :key="post.id"
-                  :post="post"
-                />
-              </div>
-            </section>
-            <aside class="row-start-1 col-start-9 col-span-4">
-              <TheSidebar :tags="tags" :links="links" />
-            </aside>
-            <div class="min-h-screen"></div>
+        <div class="flex justify-center">
+          <div class="mx-16 max-w-[1192px]">
+            <div class="grid-cols-12 grid gap-x-8 lg:gap-x-0">
+              <section class="row-start-1 col-start-1 col-span-8 lg:col-span-7">
+                <div class="py-3">
+                  <HomeFeedPost
+                    v-for="post in posts"
+                    :key="post.id"
+                    :post="post"
+                  />
+                </div>
+              </section>
+              <aside class="row-start-1 col-start-9 col-span-4">
+                <TheSidebar :tags="tags" :links="links" />
+              </aside>
+              <div class="min-h-screen"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -193,7 +195,7 @@ const posts = reactive<PostDto[]>([
     author: "Natalie Worth",
     community: "UX collective",
     title: "Upcoming Vue 3 “Vapor Mode”",
-    date: "Dec 3",
+    date: "Dec 3, 2023",
     duration: "4",
     isMemberOnly: false,
   },
@@ -201,7 +203,7 @@ const posts = reactive<PostDto[]>([
     id: 2,
     author: "Thomas Smith",
     title: "Did OpenAI Secretly Create a Brain-Like Intelligence After All?",
-    date: "Nov 28",
+    date: "Nov 28, 2023",
     duration: "11",
     isMemberOnly: true,
   },
@@ -211,7 +213,7 @@ const posts = reactive<PostDto[]>([
     community: "The Writing Cooperative",
     title:
       "How a Professor’s One Piece of Advice Influenced My Entire Writing Career",
-    date: "Nov 26",
+    date: "Nov 26, 2023",
     duration: "9",
     isMemberOnly: true,
     isBookAuthor: true,
@@ -221,7 +223,7 @@ const posts = reactive<PostDto[]>([
     author: "Maevyn Frey",
     community: "Fourth Wave",
     title: "My Disability Was Fetishized When I Was a Child",
-    date: "Nov 24",
+    date: "6 days ago",
     duration: "12",
     isMemberOnly: true,
   },
@@ -230,7 +232,7 @@ const posts = reactive<PostDto[]>([
     author: "Luka Bönisch",
     community: "The Taoist Online",
     title: "The Problem You Think You Have Is Never the Real Problem",
-    date: "Nov 24",
+    date: "Nov 24, 2023",
     duration: "9",
     isMemberOnly: false,
   },
@@ -239,7 +241,7 @@ const posts = reactive<PostDto[]>([
     author: "Clark Wright",
     community: "The Airbnb Tech Blog",
     title: "Data Quality Score: The next chapter of data quality at Airbnb",
-    date: "Nov 28",
+    date: "Nov 28, 2023",
     duration: "9",
     isMemberOnly: false,
   },
@@ -247,7 +249,7 @@ const posts = reactive<PostDto[]>([
     id: 7,
     author: "Lessig",
     title: "ChatGPT, or: How I Learned to Stop Worrying and Love AI",
-    date: "Nov 29",
+    date: "3 days ago",
     duration: "7",
     isMemberOnly: false,
     isBookAuthor: true,
@@ -256,7 +258,7 @@ const posts = reactive<PostDto[]>([
     id: 8,
     author: "Lyman Stone",
     title: "How Many Hobbits? A Demographic Analysis of Middle Earth",
-    date: "Dec 6",
+    date: "Dec 6, 2023",
     duration: "16",
     isMemberOnly: false,
   },
@@ -267,7 +269,7 @@ const saved = reactive<PostDto[]>([
     id: 8,
     author: "Lyman Stone",
     title: "How Many Hobbits? A Demographic Analysis of Middle Earth",
-    date: "Dec 6",
+    date: "Dec 6, 2023",
     duration: "16",
     isMemberOnly: false,
   },
@@ -275,7 +277,7 @@ const saved = reactive<PostDto[]>([
     id: 7,
     author: "Lessig",
     title: "ChatGPT, or: How I Learned to Stop Worrying and Love AI",
-    date: "Nov 29",
+    date: "Nov 29, 2023",
     duration: "7",
     isMemberOnly: false,
     isBookAuthor: true,
@@ -285,7 +287,7 @@ const saved = reactive<PostDto[]>([
     author: "Maevyn Frey",
     community: "Fourth Wave",
     title: "My Disability Was Fetishized When I Was a Child",
-    date: "Nov 24",
+    date: "Nov 24, 2023",
     duration: "12",
     isMemberOnly: true,
   },
@@ -294,7 +296,7 @@ const saved = reactive<PostDto[]>([
     author: "Luka Bönisch",
     community: "The Taoist Online",
     title: "The Problem You Think You Have Is Never the Real Problem",
-    date: "Nov 24",
+    date: "Nov 24, 2023",
     duration: "9",
     isMemberOnly: false,
   },

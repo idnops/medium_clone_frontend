@@ -3,13 +3,11 @@
     <TheNavigationMain />
     <div class="mx-auto max-w-[1336px]">
       <div class="flex flex-row justify-evenly">
-        <main
-          class="min-w-[728px] max-w-[728px] flex-auto text-left sm:text-center"
-        >
+        <main class="min-w-0 lg:min-w-[728px] max-w-[728px] flex-auto">
           <slot name="main" />
         </main>
         <div
-          class="min-w-[368px] max-w-[368px] border-l border-neutral-100 pl-10 pr-6 min-h-screen"
+          class="min-w-[368px] max-w-[368px] border-l border-neutral-100 pl-10 pr-6 min-h-screen hidden md:block"
         >
           <slot name="aside" />
         </div>

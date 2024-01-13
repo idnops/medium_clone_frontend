@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <div class="container mx-auto">
+  <div class="flex justify-center">
+    <div class="mx-16 max-w-[1192px]">
       <div class="pt-10 pb-4">
         <div class="flex flex-row items-center mb-4">
           <TrendIcon class="mr-[10px]" />
