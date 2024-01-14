@@ -1,6 +1,6 @@
 <template>
   <div ref="wrapper">
-    <div ref="tooltip" class="tooltip rounded-[4px] z-[500]">
+    <div ref="popup" class="popup rounded-[4px] z-[500]">
       <div class="bg-white rounded-[4px]">
         <div>
           <slot name="content" v-if="isShown" />
@@ -48,7 +48,7 @@ const { placement, type, offset, noArrow, withOverlay } = withDefaults(
 const popperInstance = ref();
 const wrapper = ref();
 const popcorn = ref();
-const tooltip = ref();
+const popup = ref();
 const interval = ref();
 const isShown = ref(false);
 const isOverlayVisible = ref(false);
@@ -60,11 +60,11 @@ onMounted(() => {
   } else {
     useEventListener(popcorn.value, "mouseenter", showAndUpdate);
     useEventListener(popcorn.value, "mouseleave", hide);
-    useEventListener(tooltip.value, "mouseenter", show);
-    useEventListener(tooltip.value, "mouseleave", hide);
+    useEventListener(popup.value, "mouseenter", show);
+    useEventListener(popup.value, "mouseleave", hide);
   }
 
-  popperInstance.value = createPopper(popcorn.value, tooltip.value, {
+  popperInstance.value = createPopper(popcorn.value, popup.value, {
     placement: placement,
     modifiers: [
       {
@@ -78,13 +78,13 @@ onMounted(() => {
 });
 
 const show = (): void => {
-  tooltip.value.setAttribute("data-show", "");
+  popup.value.setAttribute("data-show", "");
   isShown.value = true;
   clearTimeout(interval.value);
 };
 
 const showAndUpdate = (): void => {
-  tooltip.value.setAttribute("data-show", "");
+  popup.value.setAttribute("data-show", "");
   isShown.value = true;
   clearTimeout(interval.value);
   popperInstance.value.update();
@@ -92,28 +92,28 @@ const showAndUpdate = (): void => {
 
 const hide = (): void => {
   interval.value = setTimeout(() => {
-    tooltip.value.removeAttribute("data-show");
+    popup.value.removeAttribute("data-show");
     isShown.value = false;
   }, 200);
 };
 
 const toggleClick = (): void => {
   if (isShown.value) {
-    tooltip.value.removeAttribute("data-show");
+    popup.value.removeAttribute("data-show");
     isOverlayVisible.value = false;
     isShown.value = false;
   } else {
     if (withOverlay) {
       isOverlayVisible.value = true;
     }
-    tooltip.value.setAttribute("data-show", "");
+    popup.value.setAttribute("data-show", "");
     isShown.value = true;
     popperInstance.value.update();
   }
 };
 
 const hideOnClick = (): void => {
-  tooltip.value.removeAttribute("data-show");
+  popup.value.removeAttribute("data-show");
   isOverlayVisible.value = false;
 
   isShown.value = false;
@@ -125,14 +125,14 @@ const setSlotRef = (el: any): void => {
 </script>
 
 <style scoped>
-.tooltip {
+.popup {
   display: none;
   box-shadow:
     rgba(0, 0, 0, 0.05) 0px 0px 4px,
     rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
 
-.tooltip[data-show] {
+.popup[data-show] {
   display: block;
 }
 
@@ -158,20 +158,20 @@ const setSlotRef = (el: any): void => {
   transform: rotate(45deg);
 }
 
-.tooltip[data-popper-placement^="top"] > div > .arrow {
+.popup[data-popper-placement^="top"] > div > .arrow {
   bottom: -6px;
 }
 
-.tooltip[data-popper-placement^="bottom"] > div > .arrow {
+.popup[data-popper-placement^="bottom"] > div > .arrow {
   top: -4px;
   left: 32px;
 }
 
-.tooltip[data-popper-placement^="left"] > div > .arrow {
+.popup[data-popper-placement^="left"] > div > .arrow {
   right: -6px;
 }
 
-.tooltip[data-popper-placement^="right"] > div > .arrow {
+.popup[data-popper-placement^="right"] > div > .arrow {
   left: -6px;
 }
 </style>

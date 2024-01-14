@@ -68,25 +68,40 @@
                   </div>
                   <div class="flex flex-[0_0_0px] justify-end items-center">
                     <div>
-                      <button
-                        class="p-2 text-neutral-500 hover:text-neutral-900"
-                      >
-                        <BookmarkIcon />
-                      </button>
+                      <UiTooltip message="Save">
+                        <template v-slot:activator="{ setRef }">
+                          <button
+                            :ref="(el) => setRef(el)"
+                            class="p-2 text-neutral-500 hover:text-neutral-900"
+                          >
+                            <BookmarkIcon />
+                          </button>
+                        </template>
+                      </UiTooltip>
                     </div>
                     <div>
-                      <button
-                        class="p-2 text-neutral-500 hover:text-neutral-900"
-                      >
-                        <MinusRoundedIcon />
-                      </button>
+                      <UiTooltip message="Show less like this">
+                        <template v-slot:activator="{ setRef }">
+                          <button
+                            :ref="(el) => setRef(el)"
+                            class="p-2 text-neutral-500 hover:text-neutral-900"
+                          >
+                            <MinusRoundedIcon />
+                          </button>
+                        </template>
+                      </UiTooltip>
                     </div>
                     <div>
-                      <button
-                        class="py-2 px-0.5 text-neutral-500 hover:text-neutral-900"
-                      >
-                        <DotsHorizontalIcon />
-                      </button>
+                      <UiTooltip message="More">
+                        <template v-slot:activator="{ setRef }">
+                          <button
+                            class="py-2 px-0.5 text-neutral-500 hover:text-neutral-900"
+                            :ref="(el) => setRef(el)"
+                          >
+                            <DotsHorizontalIcon />
+                          </button>
+                        </template>
+                      </UiTooltip>
                     </div>
                   </div>
                 </div>
@@ -157,6 +172,7 @@ import MemberOnly from "../utils/MemberOnly.vue";
 import BookmarkIcon from "../main/Icons/BookmarkIcon.vue";
 import MinusRoundedIcon from "../main/Icons/MinusRoundedIcon.vue";
 import DotsHorizontalIcon from "../main/Icons/DotsHorizontalIcon.vue";
+import UiTooltip from "../ui/UiTooltip.vue";
 
 interface Props {
   post: PostDto;
