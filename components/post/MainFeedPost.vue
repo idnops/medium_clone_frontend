@@ -85,6 +85,7 @@
                           <button
                             :ref="(el) => setRef(el)"
                             class="p-2 text-neutral-500 hover:text-neutral-900"
+                            @click="openToast"
                           >
                             <MinusRoundedIcon />
                           </button>
@@ -173,6 +174,7 @@ import BookmarkIcon from "../main/Icons/BookmarkIcon.vue";
 import MinusRoundedIcon from "../main/Icons/MinusRoundedIcon.vue";
 import DotsHorizontalIcon from "../main/Icons/DotsHorizontalIcon.vue";
 import UiTooltip from "../ui/UiTooltip.vue";
+import { useToast } from "../../stores/toast";
 
 interface Props {
   post: PostDto;
@@ -180,6 +182,20 @@ interface Props {
 }
 
 const { post, index } = defineProps<Props>();
+const toast = useToast();
+
+const openToast = (): void => {
+  toast.open("Got it. You will see fewer like this.", {
+    label: "Undo",
+    callback: undoToastAction,
+  });
+};
+
+const undoToastAction = (): void => {
+  // undo logic
+
+  toast.open("Undone. This story has been added back.");
+};
 </script>
 
 <style scoped></style>

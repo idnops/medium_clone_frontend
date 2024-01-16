@@ -48,7 +48,7 @@ import UiPopup from "../ui/UiPopup.vue";
 import StarIcon from "../nav/icons/StarIcon.vue";
 
 interface Props {
-  iconOnly: boolean;
+  iconOnly?: boolean;
 }
 
 const { iconOnly } = withDefaults(defineProps<Props>(), {

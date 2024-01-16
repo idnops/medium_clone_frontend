@@ -27,7 +27,9 @@
     </div>
     <div class="py-6 flex flex-wrap">
       <div class="mr-[26px] mb-2" v-for="(link, i) in links" :key="i">
-        <NuxtLink to="/" class="text-sm text-neutral-500">{{ link }}</NuxtLink>
+        <NuxtLink :to="link.url" class="text-sm text-neutral-500">{{
+          link.name
+        }}</NuxtLink>
       </div>
     </div>
   </div>
@@ -36,7 +38,12 @@
 <script setup lang="ts">
 interface Props {
   tags: string[];
-  links: string[];
+  links: Link[];
+}
+
+interface Link {
+  name: string;
+  url: string;
 }
 
 const { tags, links } = defineProps<Props>();

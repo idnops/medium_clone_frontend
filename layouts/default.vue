@@ -15,12 +15,14 @@
     </div>
 
     <UiModal />
+    <UiToast />
   </div>
 </template>
 
 <script setup lang="ts">
 import TheNavigationMain from "../components/nav/TheNavigationMain.vue";
 import UiModal from "../components/ui/UiModal.vue";
+import UiToast from "../components/ui/UiToast.vue";
 const modal = useModal();
 const { isOpen } = storeToRefs(modal);
 useHead({
