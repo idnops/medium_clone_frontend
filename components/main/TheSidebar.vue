@@ -27,7 +27,7 @@
     </div>
     <div class="py-6 flex flex-wrap">
       <div class="mr-[26px] mb-2" v-for="(link, i) in links" :key="i">
-        <NuxtLink :to="link.url" class="text-sm text-neutral-500">{{
+        <NuxtLink to="/" class="text-sm text-neutral-500">{{
           link.name
         }}</NuxtLink>
       </div>

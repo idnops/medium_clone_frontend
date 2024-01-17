@@ -1,5 +1,5 @@
 <template>
-  <div class="relative z-10 h-full overflow-hidden" v-if="isOpen" id="modal">
+  <div class="relative z-[600] h-full overflow-hidden" v-if="isOpen" id="modal">
     <transition
       appear
       enter-active-class="transition-opacity duration-100"

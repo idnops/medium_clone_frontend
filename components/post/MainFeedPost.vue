@@ -93,16 +93,25 @@
                       </UiTooltip>
                     </div>
                     <div>
-                      <UiTooltip message="More">
+                      <UiPopup placement="bottom" type="click" with-overlay>
                         <template v-slot:activator="{ setRef }">
-                          <button
-                            class="py-2 px-0.5 text-neutral-500 hover:text-neutral-900"
-                            :ref="(el) => setRef(el)"
-                          >
-                            <DotsHorizontalIcon />
-                          </button>
+                          <div :ref="(el) => setRef(el)">
+                            <UiTooltip message="More">
+                              <template v-slot:activator="{ setRef }">
+                                <button
+                                  class="py-2 px-0.5 text-neutral-500 hover:text-neutral-900"
+                                  :ref="(el) => setRef(el)"
+                                >
+                                  <DotsHorizontalIcon />
+                                </button>
+                              </template>
+                            </UiTooltip>
+                          </div>
                         </template>
-                      </UiTooltip>
+                        <template v-slot:content>
+                          <PostMoreMenu @muteAuthor="openToast" />
+                        </template>
+                      </UiPopup>
                     </div>
                   </div>
                 </div>
@@ -173,7 +182,10 @@ import MemberOnly from "../utils/MemberOnly.vue";
 import BookmarkIcon from "../main/Icons/BookmarkIcon.vue";
 import MinusRoundedIcon from "../main/Icons/MinusRoundedIcon.vue";
 import DotsHorizontalIcon from "../main/Icons/DotsHorizontalIcon.vue";
+import PostMoreMenu from "../menus/PostMoreMenu.vue";
+
 import UiTooltip from "../ui/UiTooltip.vue";
+import UiPopup from "../ui/UiPopup.vue";
 import { useToast } from "../../stores/toast";
 
 interface Props {
